@@ -1,0 +1,27 @@
+/* .app-container {
+  display: flex;
+  justify-content: center;
+} */
+
+.header {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+
+}
+
+.heading {
+  padding: 1.5rem;
+  margin: 0.5em;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.padding-margin-auto {
+  padding: auto;
+  margin: auto;
+}

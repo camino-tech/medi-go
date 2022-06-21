@@ -8,6 +8,7 @@ import '../styles/App.css';
 import Header from '../components/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AdminDashboard from '../pages/AdminDashboard';
+import AddPatient from '../pages/AddPatient/AddPatient';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/admin-dashboard' element={<AdminDashboard />} />
+            <Route path='/add-patient' element={<AddPatient />} />
           </Routes>
         </div>
       </Router>

@@ -59,3 +59,12 @@
   /* border-radius: 10px; */
   
 }
+
+.max-width {
+  max-width: 500px;
+}
+
+#add-patient-submit {
+  margin: 10px 10px 10px 0px;
+  padding: auto;
+}

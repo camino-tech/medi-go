@@ -11,6 +11,11 @@ import { register, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks'
 
+
+/**
+ * This page can only be accessed through the Super Admin role and is used to
+ * register new admins.
+ */
 function Register() {
 
   const [formData, setFormData] = useState({
@@ -18,9 +23,10 @@ function Register() {
     email: '',
     password: '',
     password2: '',
+    role: '',
   })
 
-  const { name, email, password, password2 } = formData
+  const { name, email, password, password2, role } = formData
 
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
@@ -32,7 +38,12 @@ function Register() {
       toast.error(message)
     }
 
-    if (isSuccess || user) {
+    // if (isSuccess || user) {
+    //   navigate('/')
+    // }
+
+    // On success of making a new account, redirect to dashboard.
+    if (isSuccess) {
       navigate('/')
     }
 
@@ -58,6 +69,7 @@ function Register() {
         name,
         email,
         password,
+        role,
       }
       console.log(userData)
       // @ts-ignore
@@ -105,6 +117,20 @@ function Register() {
                 <Form.Group className='mb-3' controlId='RegisterFormPassword2'>
                   <Form.Label>Please re-enter your password</Form.Label>
                   <Form.Control type='password' name='password2' value={password2} onChange={onChange} />
+                </Form.Group>
+
+                <Form.Group className='mt-3 mb-3' controlId='RegisterFormRole'>
+                  {/* <Form.Label>Please select a role</Form.Label> */}
+                  <Form.Control
+                    as='select'
+                    name='role'
+                    value={role}
+                    onChange={onChange}
+                    >
+                      <option>Please select a role</option>
+                      <option value='admin'>Admin</option>
+                      <option value='superAdmin'>Super Admin</option>
+                  </Form.Control>
                 </Form.Group>
 
                 {/* Submit Button */}

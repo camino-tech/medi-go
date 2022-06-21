@@ -7,6 +7,7 @@ import Register from '../pages/Register';
 import '../styles/App.css';
 import Header from '../components/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AdminDashboard from '../pages/AdminDashboard';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path='/' element={<Dashboard />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/admin-dashboard' element={<AdminDashboard />} />
           </Routes>
         </div>
       </Router>

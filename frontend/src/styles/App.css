@@ -31,7 +31,7 @@
   border-radius: 10px;
 }
 
-.placeholder-div {
+/* .placeholder-div {
   background-color:whitesmoke;
   display: flex;
   justify-content: center;
@@ -39,4 +39,23 @@
   max-width: 800px !important;
   text-align: center;
   padding: 50px 0;
+} */
+
+.height {
+  height: 60vh;
+}
+
+.fixed-height-overflow {
+  max-height: 30rem;
+  overflow: auto;
+}
+
+.grey-bg {
+  background-color: grey;
+}
+
+#chatbox-outer {
+  min-height: 30rem;
+  /* border-radius: 10px; */
+  
 }

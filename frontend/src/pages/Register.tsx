@@ -71,7 +71,7 @@ function Register() {
         password,
         role,
       }
-      console.log(userData)
+      // console.log(userData)
       // @ts-ignore
       dispatch(register(userData))
     }

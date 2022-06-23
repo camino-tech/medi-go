@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
 
+/**
+ * patientCode === ID
+ */
+
 const patientSchema = mongoose.Schema(
   {
     patientCode: {

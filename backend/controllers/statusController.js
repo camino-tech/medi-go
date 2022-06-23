@@ -49,7 +49,7 @@ const updateStatus = asyncHandler(async (req, res) => {
     throw new Error("Status of patient not found")
   }
 
-  const updatedStatus = await Status.findByIdAndUpdate(status._id, req.body);
+  const updatedStatus = await Status.findByIdAndUpdate(req.params.id, req.body);
 
   res.status(200).json(updatedStatus);
 })

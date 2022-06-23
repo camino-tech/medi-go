@@ -32,7 +32,7 @@ const setPatient = asyncHandler(async (req, res) => {
 
   
   // create patient
-  const patient = await Patient.create({
+  const patient = await Patients.create({
     patientCode,
     name,
     emergencyContactName,

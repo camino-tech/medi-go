@@ -11,7 +11,10 @@ import { login, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks'
 
-function Login() {
+
+// This is the admin login page. This route should only be seen by the
+// people who knows it exists. to access this page the url would be /admin-login
+function AdminLogin() {
 
   const [formData, setFormData] = useState({
     email: '',
@@ -31,7 +34,7 @@ function Login() {
     }
 
     if (isSuccess || user) {
-      navigate('/')
+      navigate('/admin-dashboard')
     }
 
     dispatch(reset())
@@ -68,8 +71,7 @@ function Login() {
           <Col className='center' sm={3}>
             {/* Register text */}
             <section className='heading'>
-              <h1>Login</h1>
-              <p>Please login</p>
+              <h1>Admin Login</h1>
             </section>
           </Col>
           <Col className='center mt-3'>
@@ -77,13 +79,13 @@ function Login() {
               <Form onSubmit={onSubmit}>
 
                 {/* email */}
-                <Form.Group className='mb-3' controlId='RegisterFormEmail'>
+                <Form.Group className='mb-3' controlId='LoginFormEmail'>
                   <Form.Label>Email Address</Form.Label>
                   <Form.Control type='email' placeholder='Enter email' name='email' value={email} onChange={onChange} />
                 </Form.Group>
 
                 {/* password */}
-                <Form.Group className='mb-3' controlId='RegisterFormPassword'>
+                <Form.Group className='mb-3' controlId='LoginFormPassword'>
                   <Form.Label>Password</Form.Label>
                   <Form.Control type='password' name='password' value={password} onChange={onChange} />
                 </Form.Group>
@@ -99,4 +101,4 @@ function Login() {
   )
 }
 
-export default Login
+export default AdminLogin

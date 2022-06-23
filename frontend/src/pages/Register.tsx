@@ -89,7 +89,7 @@ function Register() {
             {/* Register text */}
             <section className='heading'>
               <h1>Register</h1>
-              <p>Please create an account</p>
+              <p>Register a new admin account.</p>
             </section>
           </Col>
           <Col className='center mt-3'>

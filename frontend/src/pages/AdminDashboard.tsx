@@ -25,7 +25,7 @@ const AdminDashboard = () => {
 
     // if there isn't a user logged in redirect to login page
     if(!user) {
-      navigate('/login')
+      navigate('/admin-login')
     }
 
   }, [user, navigate])

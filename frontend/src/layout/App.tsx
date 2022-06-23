@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Dashboard from '../pages/Dashboard';
-import Login from '../pages/Login';
+import AdminLogin from '../pages/AdminLogin';
 import Register from '../pages/Register';
 import '../styles/App.css';
 import Header from '../components/Header';
@@ -18,7 +18,7 @@ function App() {
           <Header />
           <Routes>
             <Route path='/' element={<Dashboard />} />
-            <Route path='/login' element={<Login />} />
+            <Route path='/admin-login' element={<AdminLogin />} />
             <Route path='/register' element={<Register />} />
             <Route path='/admin-dashboard' element={<AdminDashboard />} />
             <Route path='/add-patient' element={<AddPatient />} />

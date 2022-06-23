@@ -68,3 +68,7 @@
   margin: 10px 10px 10px 0px;
   padding: auto;
 }
+
+#nav-item-logout {
+  text-decoration: none;
+}

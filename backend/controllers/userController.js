@@ -8,7 +8,12 @@ const User = require("../models/userModel");
 // @route POST /api/users
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password, role } = req.body;
+  const {
+    name,
+    email,
+    password,
+    role
+  } = req.body;
 
   // check if the api got all fields
   if (!name || !email || !password || !role) {

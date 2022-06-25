@@ -72,3 +72,13 @@
 #nav-item-logout {
   text-decoration: none;
 }
+
+#admin-container {
+  width: 100%;
+  margin: auto;
+  height: 100%;
+}
+
+#admin-login-header {
+  font-size: 5rem;
+}

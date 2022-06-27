@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row'
+// import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -53,7 +53,7 @@ function AdminLogin() {
 
     const userData = {
       email,
-      password
+      password,
     }
 
     // @ts-ignore
@@ -66,15 +66,14 @@ function AdminLogin() {
 
   return (
     <>
-      <Container>
-        <Row>
-          <Col className='center' sm={3}>
+      <Container id='admin-container' className='center'>
+          <Col className='center' sm={4}>
             {/* Register text */}
             <section className='heading'>
-              <h1>Admin Login</h1>
+              <h1 id='admin-login-header'>Admin Login</h1>
             </section>
           </Col>
-          <Col className='center mt-3'>
+          <Col className='mt-3' sm={3}>
             <section className="register-form">
               <Form onSubmit={onSubmit}>
 
@@ -95,7 +94,6 @@ function AdminLogin() {
               </Form>
             </section>
           </Col>
-        </Row>
       </Container>
     </>
   )

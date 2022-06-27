@@ -33,14 +33,27 @@ function Register() {
 
   const { user, isLoading, isError, isSuccess, message } = useAppSelector((state) => state.auth)
 
+  const isSuperAdminFun = () => {
+    if (!user) return false
+
+    if (user.role[0] === 'superAdmin') {
+      return true
+    }
+
+    return false
+  }
+
+  const isSuperAdmin = isSuperAdminFun()
+
   useEffect(() => {
     if (isError) {
       toast.error(message)
     }
 
-    // if (isSuccess || user) {
-    //   navigate('/')
-    // }
+    // if the user is not a superadmin, redirect to admin login
+    if (!isSuperAdmin) {
+      navigate('/admin-login')
+    }
 
     // On success of making a new account, redirect to dashboard.
     if (isSuccess) {
@@ -49,7 +62,7 @@ function Register() {
 
     dispatch(reset())
 
-  }, [user, isError, isSuccess, message, navigate, dispatch])
+  }, [isSuperAdmin, user, isError, isSuccess, message, navigate, dispatch])
 
   const onChange = (e:any) => {
     setFormData((previousState) => ({

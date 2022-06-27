@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row'
 import { fakeData } from './FakeDataDeleteLater'
 import PatientTable from '../components/PatientTable'
 import Chat from '../components/Chat/ChatBox'
+import TestStatusDispatch from './TestStatusDispatch'
 
 /**
  * in the admin dashboard page, you can change the status of a patient
@@ -41,6 +42,9 @@ const AdminDashboard = () => {
         </Row>
         <Row className='center'>
           <Chat />
+        </Row>
+        <Row>
+          <TestStatusDispatch />
         </Row>
       </Container>
     </>

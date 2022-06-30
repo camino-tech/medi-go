@@ -21,11 +21,13 @@ const setPatient = asyncHandler(async (req, res) => {
     emergencyContactEmail,
     emergencyContactPhone,
     websiteCode,
+    employeeID,
+    typeOfSurgery,
   } = req.body;
 
   // check if all fields exist
   if (!patientCode || !name || !emergencyContactName || !emergencyContactEmail
-    || !emergencyContactName || !emergencyContactPhone || !websiteCode) {
+    || !emergencyContactName || !emergencyContactPhone || !websiteCode || !employeeID || !typeOfSurgery) {
       res.status(400);
       throw new Error("Please fill in all required fields.")
   }
@@ -39,6 +41,8 @@ const setPatient = asyncHandler(async (req, res) => {
     emergencyContactEmail,
     emergencyContactPhone,
     websiteCode,
+    employeeID,
+    typeOfSurgery,
   });
 
   res.status(200).json(patient)
@@ -81,7 +85,7 @@ const deletePatient = asyncHandler(async (req,res) => {
 
   await patient.remove();
 
-  res.status(200).jsoon({ id: req.params.id });
+  res.status(200).json({ id: req.params.id });
 });
 
 module.exports = {

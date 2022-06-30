@@ -54,6 +54,21 @@ const updateStatus = asyncHandler(async (req, res) => {
   res.status(200).json(updatedStatus);
 })
 
+// @desc    Delte status
+// @route   PUT /api/status/:id
+// @access  Private
+const deleteStatus = asyncHandler(async (req, res) => {
+  const status = await Status.findById({ patientId: req.params.id });
+    if (!status) {
+    res.status(400);
+    throw new Error("Status of patient not found");
+  }
+
+  await status.remove();
+
+  res.status(200).jsoon({ id: req.params.id });
+});
+
 module.exports = {
   getStatus,
   setStatus,

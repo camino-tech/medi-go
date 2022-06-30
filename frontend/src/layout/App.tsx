@@ -9,6 +9,7 @@ import Header from '../components/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AdminDashboard from '../pages/AdminDashboard';
 import AddPatient from '../pages/AddPatient/AddPatient';
+import UserLogin from '../pages/UserLogin';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <div className='app-container'>
           <Header />
           <Routes>
-            <Route path='/' element={<Dashboard />} />
+            <Route path='/' element={<UserLogin />} />
+            <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/admin-login' element={<AdminLogin />} />
             <Route path='/register' element={<Register />} />
             <Route path='/admin-dashboard' element={<AdminDashboard />} />

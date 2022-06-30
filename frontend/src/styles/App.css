@@ -3,6 +3,14 @@
   justify-content: center;
 } */
 
+#root {
+  height: 100vh;
+}
+
+.app-container {
+  height: 100%;
+}
+
 .header {
   list-style-type: none;
   margin: 0;

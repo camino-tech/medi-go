@@ -66,11 +66,12 @@ const deleteStatus = asyncHandler(async (req, res) => {
 
   await status.remove();
 
-  res.status(200).jsoon({ id: req.params.id });
+  res.status(200).json({ id: req.params.id });
 });
 
 module.exports = {
   getStatus,
   setStatus,
   updateStatus,
+  deleteStatus,
 };

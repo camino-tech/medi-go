@@ -23,7 +23,7 @@ const UserLogin = () => {
         </Col>
       </Row>
     </Container>
-  )
+  );
 };
 
 export default UserLogin;

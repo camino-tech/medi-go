@@ -9,7 +9,8 @@ import Header from '../components/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AdminDashboard from '../pages/AdminDashboard';
 import AddPatient from '../pages/AddPatient/AddPatient';
-import UserLogin from '../pages/UserLogin';
+import UserLogin from '../pages/UserRoute/UserLogin';
+import UserHomePage from '../pages/UserRoute/UserHomePage';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
           <Header />
           <Routes>
             <Route path='/' element={<UserLogin />} />
+            {/* change path to: '/:id', must be protected */}
+            <Route path='/home' element={<UserHomePage />} /> 
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/admin-login' element={<AdminLogin />} />
             <Route path='/register' element={<Register />} />

@@ -81,7 +81,7 @@ const deletePatient = asyncHandler(async (req,res) => {
 
   await patient.remove();
 
-  res.status(200).jsoon({ id: req.params.id });
+  res.status(200).json({ id: req.params.id });
 });
 
 module.exports = {

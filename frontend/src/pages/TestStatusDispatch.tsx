@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row'
 import { Button } from 'react-bootstrap'
 import { createStatus, getStatus, deleteStatus } from '../features/status/statusSlice'
 
+//{ _id: ObjectId('62be1a417ecd247fdc42f541')}
 /**
  * in the admin dashboard page, you can change the status of a patient
  * and chat with patients families
@@ -59,7 +60,7 @@ const TestStatusDispatch = () => {
               <Button onClick={
                 () => {
                   // @ts-ignore
-                  dispatch(deleteStatus(status._id))
+                  dispatch(deleteStatus('62be1a417ecd247fdc42f541'))
                 }
               }>Delete</Button>
             </div>

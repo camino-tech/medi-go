@@ -3,9 +3,9 @@ import { Button, Card, Col, Container, ListGroup, Row } from 'react-bootstrap';
 
 const UserHomePage = () => {
   return (
-    <Container className='mt-2'>
+    <Container className='mt-3'>
       <Row className='justify-content-center' lg={2}>
-        <Col className='mt-3' lg={4}>
+        <Col className='mt-2' lg={4}>
           <Card>
             <Card.Header>Patient Code: 00001</Card.Header>
             <Card.Body>
@@ -15,7 +15,7 @@ const UserHomePage = () => {
             </Card.Body>
           </Card>
         </Col>
-        <Col className='mt-3' lg={8}>
+        <Col className='mt-2' lg={8}>
           <Card>
             <Card.Header>Previous Updates</Card.Header>
             <ListGroup.Item>06/29/2022 9:30 AM Pre-Surgery</ListGroup.Item>
@@ -24,7 +24,7 @@ const UserHomePage = () => {
         </Col>
       </Row>
     </Container>
-  )
+  );
 };
 
 export default UserHomePage;

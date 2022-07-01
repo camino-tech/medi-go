@@ -11,6 +11,7 @@ import AdminDashboard from '../pages/AdminDashboard';
 import AddPatient from '../pages/AddPatient/AddPatient';
 import UserLogin from '../pages/UserRoute/UserLogin';
 import UserHomePage from '../pages/UserRoute/UserHomePage';
+import PatientPage from '../pages/Patient/PatientPage';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path='/register' element={<Register />} />
             <Route path='/admin-dashboard' element={<AdminDashboard />} />
             <Route path='/add-patient' element={<AddPatient />} />
+            <Route path='/patient-page' element={<PatientPage />} />
           </Routes>
         </div>
       </Router>

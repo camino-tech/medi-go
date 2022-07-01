@@ -30,6 +30,14 @@ const patientSchema = mongoose.Schema(
       type: String, 
       required: true,
     },
+    employeeID: {
+      type: Number,
+      required: true,
+    },
+    typeOfSurgery: {
+      type: String,
+      required: true,
+    },
     updates: {
       type: [String], //edit with statusSchema after
     }

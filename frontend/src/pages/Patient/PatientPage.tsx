@@ -2,12 +2,13 @@ import React from 'react';
 import PatientCard from '../../components/PatientPageComponents/PatientCard';
 import PrimaryContactCard from '../../components/PatientPageComponents/PrimaryContactCard';
 import { Button, Card, Col, Container, ListGroup, Row } from 'react-bootstrap';
+import { fakeData } from '../FakeDataDeleteLater';
 
 const PatientPage = () => {
   return (
       <Container className='mt-2'>
       <div>
-        <PatientCard />
+              <PatientCard props={fakeData } />
         </div>
 
       {/* <Row className='justify-content-center' lg={2}>

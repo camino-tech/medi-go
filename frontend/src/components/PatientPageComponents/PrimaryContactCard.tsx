@@ -1,39 +1,38 @@
 
 import React from 'react'
-import Table from 'react-bootstrap/Table'
+import { Card, ListGroup, Button } from 'react-bootstrap'
 
 const PrimaryContactCard = (props: any) => {
 
   return (
-    <div className='box-shadow mt-3 mb-3'>
-      <h2 className='center'>Patients</h2>
-      <div className="fixed-height-overflow">
-        <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Family Email</th>
-            <th>Code</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
+          <Card.Body>
+            <ListGroup>
+            <ListGroup.Item>
+          <Card.Title as='h1'> Primary Contact</Card.Title>
           {
-            props.props.patients.map((patient: any) => (
-              <tr key={patient.id}>
-                <td>{patient.id}</td>
-                <td>{patient.name}</td>
-                <td>{patient.familyEmail}</td>
-                <td>{patient.code}</td>
-                <td>{patient.status}</td>
-              </tr>
+            props.props.primaryCareContact.map((primaryCareContact: any) => (
+              <Card.Text key={primaryCareContact.name}>
+                <b>Name:</b> <br />{primaryCareContact.name}<br />
+                <b>Email:</b> <br />{primaryCareContact.email}<br />
+                <b>Phone</b>: <br />{primaryCareContact.phone}<br />
+                <b>Relation to Patient:</b> <br />{primaryCareContact.relationshipToPatient}<br />
+                <Button>NOTIFY</Button>
+              </Card.Text>
             ))
           }
-          </tbody>
-        </Table>       
-      </div>
-    </div>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <b>Type of Surgery:</b> Brazillian Butt Lift<br/>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <b>Updates: </b> <br/>
+          <ListGroup.Item>06/29/2022 9:30 AM Pre-Surgery</ListGroup.Item> <br />
+              <Button>
+                  Update Patient Information
+              </Button>
+              </ListGroup.Item>
+              </ListGroup>
+          </Card.Body>
   )
 }
 

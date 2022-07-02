@@ -1,15 +1,20 @@
 import React from 'react';
 import PatientCard from '../../components/PatientPageComponents/PatientCard';
 import PrimaryContactCard from '../../components/PatientPageComponents/PrimaryContactCard';
-import { Button, Card, Col, Container, ListGroup, Row } from 'react-bootstrap';
-import { fakeData } from '../FakeDataDeleteLater';
-
+import { CardGroup, Container, Card } from 'react-bootstrap';
+import { fakeDataPatientPage } from '../FakeDataPatientPage';
+import { fakeDataPrimaryContact } from '../FakeDataPrimaryContact';
 const PatientPage = () => {
   return (
       <Container className='mt-2'>
-      <div>
-              <PatientCard props={fakeData } />
-        </div>
+          <CardGroup>
+              <Card>
+                  <PatientCard props={fakeDataPatientPage} />
+              </Card>
+                  <Card>
+                      <PrimaryContactCard props={ fakeDataPrimaryContact } />
+                  </Card>
+        </CardGroup>
 
       {/* <Row className='justify-content-center' lg={2}>
         <Col className='mt-3' lg={4}>

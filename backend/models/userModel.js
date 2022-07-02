@@ -15,6 +15,10 @@ const userSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add a password"],
     },
+    relationshipToPatient: {
+      type: String,
+      required: [true, "Please add reltionship to patient"],
+    },
     role: {
       type: [{
         type: String,

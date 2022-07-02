@@ -14,17 +14,17 @@ const patientSchema = mongoose.Schema(
       type: String,
       required: [true, "Please key in patient's name"]
     },
-    emergencyContactName: {
+    primaryContactName: {
       type: String,
-      required: [true, "Please key in patient's emergency contact's name"]
+      required: [true, "Please key in patient's primary contact's name"]
     },
-    emergencyContactEmail: {
+    primaryContactEmail: {
       type: String,
-      required: [true, "Please key in patient's emergency contact's email"]
+      required: [true, "Please key in patient's primary contact's email"]
     },
-    emergencyContactPhone: {
+    primaryContactPhone: {
       type: Number,
-      required: [true, "Please key in patient's emergency contact's phone number"]
+      required: [true, "Please key in patient's primary contact's phone number"]
     },
     websiteCode: {
       type: String, 

@@ -1,12 +1,10 @@
 
 import React from 'react'
-import { Button, Card, CardGroup, ListGroup  } from 'react-bootstrap';
+import { Button, Card  } from 'react-bootstrap';
 
 const PatientCard = (props: any) => {
   return (
     <div>
-      <CardGroup>
-        <Card>
           <Card.Img variant="top" src="https://thumbs.dreamstime.com/b/cat-avatar-illustration-cartoon-45383590.jpg">
               </Card.Img>
           <Card.Body>
@@ -22,8 +20,7 @@ const PatientCard = (props: any) => {
               }
             <Button size="sm">EDIT</Button>
           </Card.Body>
-        </Card>
-        <Card >
+       {/* <Card >
           <Card.Body>
             <ListGroup>
             <ListGroup.Item>
@@ -40,7 +37,7 @@ const PatientCard = (props: any) => {
                 <b>Type of Surgery:</b> Brazillian Butt Lift<br/>
               </ListGroup.Item>
               <ListGroup.Item>
-                <b>Updates: </b>
+                <b>Updates: </b> <br/>
                 <Button>
                   Update Patient
                 </Button>
@@ -48,8 +45,7 @@ const PatientCard = (props: any) => {
               </ListGroup.Item>
               </ListGroup>
           </Card.Body>
-        </Card>
-      </CardGroup>
+        </Card> */}
     </div>
   )
 }

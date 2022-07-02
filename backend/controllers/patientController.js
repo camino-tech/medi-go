@@ -17,17 +17,17 @@ const setPatient = asyncHandler(async (req, res) => {
   const {
     patientCode,
     name,
-    emergencyContactName,
-    emergencyContactEmail,
-    emergencyContactPhone,
+    primaryContactName,
+    primaryContactEmail,
+    primaryContactPhone,
     websiteCode,
     employeeID,
     typeOfSurgery,
   } = req.body;
 
   // check if all fields exist
-  if (!patientCode || !name || !emergencyContactName || !emergencyContactEmail
-    || !emergencyContactName || !emergencyContactPhone || !websiteCode || !employeeID || !typeOfSurgery) {
+  if (!patientCode || !name || !primaryContactName || !primaryContactEmail
+    || !primaryContactName || !primaryContactPhone || !websiteCode || !employeeID || !typeOfSurgery) {
       res.status(400);
       throw new Error("Please fill in all required fields.")
   }
@@ -37,9 +37,9 @@ const setPatient = asyncHandler(async (req, res) => {
   const patient = await Patients.create({
     patientCode,
     name,
-    emergencyContactName,
-    emergencyContactEmail,
-    emergencyContactPhone,
+    primaryContactName,
+    primaryContactEmail,
+    primaryContactPhone,
     websiteCode,
     employeeID,
     typeOfSurgery,

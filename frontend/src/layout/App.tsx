@@ -11,6 +11,7 @@ import AdminDashboard from '../pages/AdminDashboard';
 import AddPatient from '../pages/AddPatient/AddPatient';
 import UserLogin from '../pages/UserRoute/UserLogin';
 import UserHomePage from '../pages/UserRoute/UserHomePage';
+import UpdateStatus from '../pages/UpdateStatus';
 
 function App() {
   return (
@@ -22,11 +23,14 @@ function App() {
             <Route path='/' element={<UserLogin />} />
             {/* change path to: '/:id', must be protected */}
             <Route path='/home' element={<UserHomePage />} /> 
+            
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/admin-login' element={<AdminLogin />} />
             <Route path='/register' element={<Register />} />
             <Route path='/admin-dashboard' element={<AdminDashboard />} />
             <Route path='/add-patient' element={<AddPatient />} />
+            {/* change path to: 'update-status/:id', must be protected */}
+            <Route path='/update-status' element={<UpdateStatus />} />
           </Routes>
         </div>
       </Router>

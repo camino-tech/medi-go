@@ -26,6 +26,10 @@ const patientSchema = mongoose.Schema(
       type: Number,
       required: [true, "Please key in patient's primary contact's phone number"]
     },
+    primaryContactRelationship: {
+      type: String,
+      required: true,
+    },
     websiteCode: {
       type: String, 
       required: true,

@@ -69,7 +69,7 @@
 }
 
 .max-width {
-  max-width: 500px;
+  max-width: 600px;
 }
 
 #add-patient-submit {
@@ -89,4 +89,8 @@
 
 #admin-login-header {
   font-size: 5rem;
+}
+
+.background-color {
+  background-color: beige;
 }

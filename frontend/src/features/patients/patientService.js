@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = '/api/patients';
+const API_URL = '/api/patients/';
 
 const config = (token) => ({ headers: { Authorization: `Bearer ${token}` }});
 

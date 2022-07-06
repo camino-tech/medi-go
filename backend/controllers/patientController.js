@@ -26,13 +26,46 @@ const setPatient = asyncHandler(async (req, res) => {
     typeOfSurgery,
   } = req.body;
 
-  // check if all fields exist
-  if (!patientCode || !name || !primaryContactName || !primaryContactEmail
-    || !primaryContactName || !primaryContactPhone || !primaryContactRelationship || !websiteCode || !employeeID || !typeOfSurgery) {
-      res.status(400);
-      throw new Error("Please fill in all required fields.")
+  // check if all fields exist and send correct error message
+  if (!name) {
+    res.status(400);
+    throw new Error('Please enter a name')
   }
 
+  if (!primaryContactName) {
+    res.status(400);
+    throw new Error('Please enter a primary contact name')
+  }
+
+  if (!primaryContactEmail) {
+    res.status(400)
+    throw new Error('Please enter a primary contact email')
+  }
+
+  if (!primaryContactPhone) {
+    res.status(400)
+    throw new Error('Please enter a primary contact phone number')
+  }
+
+  if (!websiteCode) {
+    res.status(400)
+    throw new Error('Please enter a website code')
+  }
+
+  if (!employeeID) {
+    res.status(400)
+    throw new Error('Please enter an employee Id')
+  }
+
+  if (!typeOfSurgery) {
+    res.status(400)
+    throw new Error('Please enter the type of surgery')
+  }
+
+  // use to generate patient code.
+  const findAllPatients = Patients.find({})
+  // find the amount of patients in the collection
+  console.log((await findAllPatients).length)
   
   // create patient
   const patient = await Patients.create({

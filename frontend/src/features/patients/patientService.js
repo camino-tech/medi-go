@@ -12,7 +12,13 @@ const createPatient = async (patientData, token) => {
 
 // get user patient
 const getPatients = async (token) => {
-  const response = await axios.get(API_URL, config(token));
+  const route = 'all'
+  const response = await axios.get(API_URL + route, config(token));
+  return response.data;
+}
+
+const getPatient = async (patientId, token) => {
+  const response = await axios.get(API_URL + patientId, config(token));
   return response.data;
 }
 
@@ -25,6 +31,7 @@ const deletePatient = async (patientId, token) => {
 const patientService = {
   createPatient,
   getPatients,
+  getPatient,
   deletePatient,
 }
 

@@ -2,6 +2,17 @@ const asyncHandler = require("express-async-handler");
 
 const Patients = require("../models/patientModel");
 
+
+const randomCode = (length) => {
+  let result = '';
+  let characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  let charLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charLength))
+  }
+  return result
+}
+
 // @desc    Get Patient
 // @route   GET /api/patients
 // @access  Private
@@ -11,17 +22,27 @@ const getPatient = asyncHandler(async (req, res) => {
   res.status(200).json(patient);
 });
 
+
+// @desc Get all patients
+// @route GET /api/patientsAll
+// @access Private
+const getPatients = asyncHandler(async (req, res) => {
+  const patients = await Patients.find({})
+
+  res.status(200).json(patients);
+});
+
 // @desc    Creates new Patient
 // @route   POST /api/patients
 const setPatient = asyncHandler(async (req, res) => {
   const {
-    patientCode,
+    // patientCode,
     name,
     primaryContactName,
     primaryContactEmail,
     primaryContactPhone,
     primaryContactRelationship,
-    websiteCode,
+    // websiteCode,
     employeeID,
     typeOfSurgery,
   } = req.body;
@@ -47,9 +68,9 @@ const setPatient = asyncHandler(async (req, res) => {
     throw new Error('Please enter a primary contact phone number')
   }
 
-  if (!websiteCode) {
+  if (!primaryContactRelationship) {
     res.status(400)
-    throw new Error('Please enter a website code')
+    throw new Error('Please enter the relationship of the primary contact')
   }
 
   if (!employeeID) {
@@ -65,7 +86,11 @@ const setPatient = asyncHandler(async (req, res) => {
   // use to generate patient code.
   const findAllPatients = Patients.find({})
   // find the amount of patients in the collection
-  console.log((await findAllPatients).length)
+  const patientCode = (await findAllPatients).length + 1
+
+  // generate random 6 character for website code.
+  const websiteCode = randomCode(6)
+
   
   // create patient
   const patient = await Patients.create({
@@ -125,6 +150,7 @@ const deletePatient = asyncHandler(async (req,res) => {
 
 module.exports = {
   getPatient,
+  getPatients,
   setPatient,
   updatePatient,
   deletePatient,

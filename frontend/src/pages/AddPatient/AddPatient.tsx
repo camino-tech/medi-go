@@ -6,7 +6,9 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Container from 'react-bootstrap/Container'
-import { createPatient } from '../../features/patients/patientSlice'
+import { createPatient, getPatients } from '../../features/patients/patientSlice'
+import { toast } from 'react-toastify'
+import Spinner from '../../components/Spinner'
 
 
 // TODO
@@ -20,6 +22,7 @@ function AddPatient() {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const { user } = useAppSelector((state) => state.auth)
+  const { isError, isLoading, message } = useAppSelector((state) => state.patients)
 
   const [patient, setPatient] = useState({
     name: '',
@@ -37,6 +40,10 @@ function AddPatient() {
 
   useEffect(() => {
 
+    if (isError) {
+      toast.error(message)
+    }
+
     // if no user is logged in navigate to home
     if (!user) {
       navigate('/')
@@ -47,7 +54,10 @@ function AddPatient() {
       navigate('/')
     }
 
-  }, [user, navigate])
+    // this will load all patients into state.
+    dispatch(getPatients())
+
+  }, [user, message, isError, dispatch, navigate])
 
   const onChange = (e:any) => {
     setPatient((previousState) => ({
@@ -61,20 +71,12 @@ function AddPatient() {
     
     // check for valid phone number
 
-    // generate patient code
-    const patientCode1 = 1111;
-
-    // generate website code
-    const userWebsiteCode = '12312314123541534514361'
-
     const patientData = {
-      patientCode: patientCode1,
       name: patient.name,
       primaryContactName: patient.emergencyContactName,
       primaryContactEmail: patient.emergencyContactEmail,
       primaryContactPhone: patient.emergencyContactPhoneNumber,
       primaryContactRelationship: patient.emergencyContactRelationship,
-      websiteCode: userWebsiteCode,
       employeeID: patient.employeeID,
       typeOfSurgery: patient.typeOfSurgery,
     }
@@ -82,10 +84,21 @@ function AddPatient() {
     // @ts-ignore
     dispatch(createPatient(patientData))
 
+    // below is the last patient added to state. display this information
+    // patients[patients.length -1]
+
     // reset form
 
 
     // figure out what we want to do after the form is completed.
+
+    // navigate('/admin-dashboard')
+  }
+
+  if (isLoading) {
+    return (
+      <Spinner />
+    )
   }
 
   return (

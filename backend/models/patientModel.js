@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 
 /**
  * patientCode === ID
+ * patientCode is the username for the patients family. (iterate over patients, get highest number and add 1)
+ * websiteCode is the password for the patients family. (randomly generate 6 digit password.)
  */
 
 const patientSchema = mongoose.Schema(

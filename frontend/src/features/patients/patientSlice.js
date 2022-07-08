@@ -12,18 +12,13 @@ const initialState = {
 //get user token
 const token = (thunkAPI) => thunkAPI.getState().auth.user.token;
 
-//get error message
-const getError = (error, thunkAPI) => {
-  const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-  return thunkAPI.rejectWithValue(message);
-};
-
 //create new patient
 export const createPatient = createAsyncThunk('patients/create', async (patientData, thunkAPI) => {
   try {
     return await patientService.createPatient(patientData, token(thunkAPI));
   } catch (error) {
-    getError(error, thunkAPI);
+    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+    return thunkAPI.rejectWithValue(message)
   }
 });
 
@@ -32,7 +27,18 @@ export const getPatients = createAsyncThunk('patients/getAll', async (_, thunkAP
   try {
     return await patientService.getPatients(token(thunkAPI));
   } catch (error) {
-    getError(error, thunkAPI);
+    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+    return thunkAPI.rejectWithValue(message)
+  }
+});
+
+// get one patient
+export const getPatient = createAsyncThunk('patients/getOne', async (id, thunkAPI) => {
+  try {
+    return await patientService.getPatient(id, token(thunkAPI));
+  } catch (error) {
+    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+    return thunkAPI.rejectWithValue(message)
   }
 });
 
@@ -41,7 +47,8 @@ export const deletePatient = createAsyncThunk('patients/delete', async (id, thun
   try {
     return await patientService.deletePatient(id, token(thunkAPI));
   } catch (error) {
-    getError(error, thunkAPI);
+    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+    return thunkAPI.rejectWithValue(message)
   }
 });
 
@@ -88,6 +95,19 @@ export const patientSlice = createSlice({
         state.patients = state.patients.filter((patient) => patient._id !== action.payload.id)
       })
       .addCase(deletePatient.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(getPatient.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(getPatient.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.patients = action.payload
+      })
+      .addCase(getPatient.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload

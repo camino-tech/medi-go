@@ -2,6 +2,17 @@ const asyncHandler = require("express-async-handler");
 
 const Patients = require("../models/patientModel");
 
+
+const randomCode = (length) => {
+  let result = '';
+  let characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  let charLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charLength))
+  }
+  return result
+}
+
 // @desc    Get Patient
 // @route   GET /api/patients
 // @access  Private
@@ -11,27 +22,74 @@ const getPatient = asyncHandler(async (req, res) => {
   res.status(200).json(patient);
 });
 
+
+// @desc Get all patients
+// @route GET /api/patientsAll
+// @access Private
+const getPatients = asyncHandler(async (req, res) => {
+  const patients = await Patients.find({})
+
+  res.status(200).json(patients);
+});
+
 // @desc    Creates new Patient
 // @route   POST /api/patients
 const setPatient = asyncHandler(async (req, res) => {
   const {
-    patientCode,
+    // patientCode,
     name,
     primaryContactName,
     primaryContactEmail,
     primaryContactPhone,
     primaryContactRelationship,
-    websiteCode,
+    // websiteCode,
     employeeID,
     typeOfSurgery,
   } = req.body;
 
-  // check if all fields exist
-  if (!patientCode || !name || !primaryContactName || !primaryContactEmail
-    || !primaryContactName || !primaryContactPhone || !primaryContactRelationship || !websiteCode || !employeeID || !typeOfSurgery) {
-      res.status(400);
-      throw new Error("Please fill in all required fields.")
+  // check if all fields exist and send correct error message
+  if (!name) {
+    res.status(400);
+    throw new Error('Please enter a name')
   }
+
+  if (!primaryContactName) {
+    res.status(400);
+    throw new Error('Please enter a primary contact name')
+  }
+
+  if (!primaryContactEmail) {
+    res.status(400)
+    throw new Error('Please enter a primary contact email')
+  }
+
+  if (!primaryContactPhone) {
+    res.status(400)
+    throw new Error('Please enter a primary contact phone number')
+  }
+
+  if (!primaryContactRelationship) {
+    res.status(400)
+    throw new Error('Please enter the relationship of the primary contact')
+  }
+
+  if (!employeeID) {
+    res.status(400)
+    throw new Error('Please enter an employee Id')
+  }
+
+  if (!typeOfSurgery) {
+    res.status(400)
+    throw new Error('Please enter the type of surgery')
+  }
+
+  // use to generate patient code.
+  const findAllPatients = Patients.find({})
+  // find the amount of patients in the collection
+  const patientCode = (await findAllPatients).length + 1
+
+  // generate random 6 character for website code.
+  const websiteCode = randomCode(6)
 
   
   // create patient
@@ -92,6 +150,7 @@ const deletePatient = asyncHandler(async (req,res) => {
 
 module.exports = {
   getPatient,
+  getPatients,
   setPatient,
   updatePatient,
   deletePatient,

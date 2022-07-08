@@ -9,6 +9,7 @@ import { getGoals } from '../features/goals/goalSlice'
 import { reset } from '../features/auth/authSlice'
 import GoalItem from '../components/GoalItem'
 import { useAppDispatch, useAppSelector } from '../hooks/hooks'
+import { toast } from 'react-toastify'
 
 
 function Dashboard() {
@@ -21,7 +22,7 @@ function Dashboard() {
 
   useEffect(() => {
     if (isError) {
-      console.log(message)
+      toast.error(message)
     }
 
     if (!user) {

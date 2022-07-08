@@ -1,9 +1,12 @@
 import React from 'react';
 import PatientCard from '../../components/PatientPageComponents/PatientCard';
 import PrimaryContactCard from '../../components/PatientPageComponents/PrimaryContactCard';
+import ChatBox from '../../components/Chat/ChatBox';
 import { CardGroup, Container, Card } from 'react-bootstrap';
 import { fakeDataPatientPage } from '../FakeDataPatientPage';
 import { fakeDataPrimaryContact } from '../FakeDataPrimaryContact';
+import { fakeDataChatBox } from '../FakeDataChatBox';
+
 const PatientPage = () => {
   return (
       <Container className='mt-2'>
@@ -13,8 +16,10 @@ const PatientPage = () => {
               </Card>
                   <Card>
                       <PrimaryContactCard props={ fakeDataPrimaryContact } />
-                  </Card>
-        </CardGroup>
+              </Card>
+          </CardGroup>
+          <ChatBox props={ fakeDataChatBox } />
+          
 
       {/* <Row className='justify-content-center' lg={2}>
         <Col className='mt-3' lg={4}>

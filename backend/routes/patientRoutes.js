@@ -11,7 +11,8 @@ const {
 const { protect } = require('../middleware/authMiddleware');
 
 router.get("/", protect, getPatient);
-router.get("/all", protect, getPatients)
+router.get("/all", protect, getPatients);
+router.post("/login", protect, deletePatient);
 router.post("/", protect, setPatient);
 router.put("/:id", protect, updatePatient);
 router.delete("/:id", protect, deletePatient);

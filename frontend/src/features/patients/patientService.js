@@ -28,11 +28,22 @@ const deletePatient = async (patientId, token) => {
   return response.data;
 }
 
+// login user patient with code
+const loginWithCode = async (patientData) => {
+  const response = await axios.post(API_URL + 'login', patientData);
+  if (response.data) {
+    localStorage.setItem('patient', JSON.stringify(response.data));
+  }
+  
+  return response.data;
+}
+
 const patientService = {
   createPatient,
   getPatients,
   getPatient,
   deletePatient,
+  loginWithCode,
 }
 
 export default patientService;

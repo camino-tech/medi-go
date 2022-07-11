@@ -22,7 +22,6 @@ const getPatient = asyncHandler(async (req, res) => {
   res.status(200).json(patient);
 });
 
-
 // @desc Get all patients
 // @route GET /api/patientsAll
 // @access Private

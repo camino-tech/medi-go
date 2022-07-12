@@ -6,13 +6,14 @@ const {
   setPatient,
   updatePatient,
   deletePatient,
+  loginWithCode,
 } = require("../controllers/patientController");
 
 const { protect } = require('../middleware/authMiddleware');
 
 router.get("/", protect, getPatient);
 router.get("/all", protect, getPatients);
-router.post("/login", protect, deletePatient);
+router.post("/login", loginWithCode);
 router.post("/", protect, setPatient);
 router.put("/:id", protect, updatePatient);
 router.delete("/:id", protect, deletePatient);

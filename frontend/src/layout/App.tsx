@@ -22,9 +22,7 @@ function App() {
           <Header />
           <Routes>
             <Route path='/' element={<UserLogin />} />
-            {/* change path to: '/:id', must be protected */}
-            <Route path='/home' element={<UserHomePage />} /> 
-            
+            <Route path='/patient-home' element={<UserHomePage />} /> 
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/admin-login' element={<AdminLogin />} />
             <Route path='/register' element={<Register />} />

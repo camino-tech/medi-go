@@ -9,6 +9,7 @@ import Container from 'react-bootstrap/Container'
 import { createPatient, getPatients } from '../../features/patients/patientSlice'
 import { toast } from 'react-toastify'
 import Spinner from '../../components/Spinner'
+import { createStatus } from '../../features/status/statusSlice'
 
 
 // TODO
@@ -22,7 +23,7 @@ function AddPatient() {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const { user } = useAppSelector((state) => state.auth)
-  const { isError, isLoading, message } = useAppSelector((state) => state.patients)
+  const { patients, isError, isLoading, message } = useAppSelector((state) => state.patients)
 
   const [patient, setPatient] = useState({
     name: '',
@@ -84,15 +85,19 @@ function AddPatient() {
     // @ts-ignore
     dispatch(createPatient(patientData))
 
-    // below is the last patient added to state. display this information
-    // patients[patients.length -1]
+    const patientCode: String = '' + (parseInt(patients[patients.length -1]['patientCode']) + 1)
+    console.log(patientCode)
 
-    // reset form
+    const newStatus: Object = {
+      patientId: patientCode,
+      statusDate: new Date(),
+      statusState: ['checkedIn']
+    }
 
-
-    // figure out what we want to do after the form is completed.
-
+    // @ts-ignore
+    dispatch(createStatus(newStatus))
     // navigate('/admin-dashboard')
+
   }
 
   if (isLoading) {

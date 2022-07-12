@@ -12,8 +12,7 @@ const registerUser = asyncHandler(async (req, res) => {
     name,
     email,
     password,
-    role,
-    relationshipToPatient,
+    role
   } = req.body;
 
   // check if the api got all fields
@@ -38,8 +37,7 @@ const registerUser = asyncHandler(async (req, res) => {
     name,
     email,
     password: hashedPassword,
-    role,
-    relationshipToPatient,
+    role
   });
 
   if (user) {
@@ -49,7 +47,6 @@ const registerUser = asyncHandler(async (req, res) => {
       email: user.email,
       token: generateToken(user._id),
       role: user.role,
-      relationshipToPatient: user.relationshipToPatient,
     });
   } else {
     res.status(400);
@@ -75,7 +72,6 @@ const loginUser = asyncHandler(async (req, res) => {
       email: user.email,
       token: generateToken(user._id),
       role: user.role,
-      relationshipToPatient: user.relationshipToPatient,
     });
   } else {
     res.status(400);

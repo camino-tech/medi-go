@@ -4,7 +4,7 @@ const Status = require("../models/statusModel");
 
 // @desc    Get Status
 // @route   GET /api/status
-// @access  Private
+// @access  Public
 const getStatus = asyncHandler(async (req, res) => {
   const status = await Status.find({ patientId: req.body.patientId });
 
@@ -39,7 +39,7 @@ const setStatus = asyncHandler(async (req, res) => {
 
 // @desc    Update status
 // @route   PUT /api/status/:id
-// @access  Private
+// @access  Public
 const updateStatus = asyncHandler(async (req, res) => {
   const status = await Status.find({ patientId: req.body.patientId });
 
@@ -56,7 +56,7 @@ const updateStatus = asyncHandler(async (req, res) => {
 
 // @desc    Delte status
 // @route   PUT /api/status/:id
-// @access  Private
+// @access  Public
 const deleteStatus = asyncHandler(async (req, res) => {
   const status = await Status.findById({ patientId: req.params.id });
     if (!status) {

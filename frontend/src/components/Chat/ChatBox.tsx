@@ -11,8 +11,8 @@ const ChatBox = (props: any) => {
       {props.props.user.map((user: any) => (
         <Card style={{ width: '18rem' }}>
           <Navbar key={user.role}>
-            <h1>Pass in role of user logged in <br />
-              <h2>{user.role}</h2> </h1>
+            <Card.Header>Pass in role of user logged in <br />
+              <h2>{user.role}</h2> </Card.Header>
               <ButtonGroup>
                 <CloseButton />
               </ButtonGroup>        

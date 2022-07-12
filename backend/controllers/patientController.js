@@ -147,10 +147,31 @@ const deletePatient = asyncHandler(async (req,res) => {
   res.status(200).json({ id: req.params.id });
 });
 
+// @desc  Validate User Log-in with Code
+// @route POST /api/patients/login
+// @access Public
+const loginWithCode = asyncHandler(async (req, res) => {
+  const { patientCode, websiteCode } = req.body;
+
+  // check if patient exists
+  const patient = await Patients.findOne({ patientCode });
+
+  if (patient && (websiteCode === patient.websiteCode)) {
+    res.json({
+      patientCode: patient.patientCode,
+      employeeID: patient.employeeID,
+    });
+  } else {
+    res.status(400);
+    throw new Error("Invalid credentials");
+  }
+})
+
 module.exports = {
   getPatient,
   getPatients,
   setPatient,
   updatePatient,
   deletePatient,
+  loginWithCode,
 };

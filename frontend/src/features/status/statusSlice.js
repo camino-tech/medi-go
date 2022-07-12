@@ -12,9 +12,7 @@ const initialState = {
 // create new status
 export const createStatus = createAsyncThunk('status/create', async (statusData, thunkAPI) => {
   try {
-    // get user token
-    const token = thunkAPI.getState().auth.user.token
-    return await statusService.createStatus(statusData, token)
+    return await statusService.createStatus(statusData)
   } catch (error) {
     const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
     return thunkAPI.rejectWithValue(message)
@@ -24,8 +22,7 @@ export const createStatus = createAsyncThunk('status/create', async (statusData,
 // get user status
 export const getStatus = createAsyncThunk('status/getAll', async (_, thunkAPI) => {
   try {
-    const token = thunkAPI.getState().auth.user.token
-    return await statusService.getStatus(token)
+    return await statusService.getStatus()
   } catch (error) {
     const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
     return thunkAPI.rejectWithValue(message)
@@ -36,8 +33,7 @@ export const getStatus = createAsyncThunk('status/getAll', async (_, thunkAPI) =
 export const deleteStatus = createAsyncThunk('status/delete', async (id, thunkAPI) => {
   try {
     // get user token
-    const token = thunkAPI.getState().auth.user.token
-    return await statusService.deleteStatus(id, token)
+    return await statusService.deleteStatus(id)
   } catch (error) {
     const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
     return thunkAPI.rejectWithValue(message)

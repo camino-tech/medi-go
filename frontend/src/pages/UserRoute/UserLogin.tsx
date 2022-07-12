@@ -27,7 +27,7 @@ const UserLogin = () => {
 
     // check if patientContact exists in local storage. If that is the case then nav
     if (localStorage.getItem('patient') !== null) {
-      navigate('/patient-home')
+      navigate('/patient-home');
     }
 
     if (isError) {

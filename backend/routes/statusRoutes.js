@@ -7,11 +7,9 @@ const {
   deleteStatus,
 } = require("../controllers/statusController");
 
-const { protect } = require('../middleware/authMiddleware');
-
-router.get("/", protect, getStatus);
-router.post("/", protect, setStatus);
-router.put("/:id", protect, updateStatus);
-router.delete("/:id", protect, deleteStatus);
+router.get("/", getStatus);
+router.post("/", setStatus);
+router.put("/:id", updateStatus);
+router.delete("/:id", deleteStatus);
 
 module.exports = router;

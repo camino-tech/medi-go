@@ -22,6 +22,8 @@ const AdminDashboard = () => {
   // get the user data
   const { user } = useAppSelector((state) => state.auth)
 
+  console.log(user)
+
   useEffect(() => {
 
     // if there isn't a user logged in redirect to login page

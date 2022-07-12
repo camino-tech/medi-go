@@ -24,10 +24,17 @@ const UserLogin = () => {
   const { patients, isLoading, isError, isSuccess, message } = useAppSelector((state) => state.patients);
 
   useEffect(() => {
+
+    // check if patientContact exists in local storage. If that is the case then nav
+    if (localStorage.getItem('patient') !== null) {
+      navigate('/patient-home')
+    }
+
     if (isError) {
       toast.error(message);
     }
 
+    // when the patientContact logs in, nav
     if (isSuccess) {
       navigate('/patient-home');
     }

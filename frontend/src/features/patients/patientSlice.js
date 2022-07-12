@@ -52,6 +52,16 @@ export const deletePatient = createAsyncThunk('patients/delete', async (id, thun
   }
 });
 
+// login with Code
+export const loginWithCode = createAsyncThunk('patients/login', async (patient, thunkAPI) => {
+  try {
+    return await patientService.loginWithCode(patient);
+  } catch (error) {
+    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
 export const patientSlice = createSlice({
   name: 'patient',
   initialState,
@@ -112,18 +122,24 @@ export const patientSlice = createSlice({
         state.isError = true
         state.message = action.payload
       })
+      .addCase(loginWithCode.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(loginWithCode.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.patients = action.payload
+      })
+      .addCase(loginWithCode.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+        state.patients = null
+      })
   }
 });
 
-// login with Code
-export const loginWithCode = createAsyncThunk('patients/login', async (patient, thunkAPI) => {
-  try {
-    return await patientService.loginWithCode(patient);
-  } catch (error) {
-    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-    return thunkAPI.rejectWithValue(message);
-  }
-});
+
 
 export const { reset } = patientSlice.actions;
 export default patientSlice.reducer; //patientReducer

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-import { getPatients, loginWithCode, reset } from '../../features/patients/patientSlice';
+import { loginWithCode, reset } from '../../features/patients/patientSlice';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
@@ -28,7 +28,7 @@ const UserLogin = () => {
       toast.error(message);
     }
 
-    if (isSuccess || patients.length < 0) {
+    if (isSuccess) {
       navigate('/patient-home');
     }
 
